@@ -1,0 +1,29 @@
+# Flutter/Dart/Pub related
+.dart_tool/
+.packages
+.pub-cache/
+.flutter-plugins
+.flutter-plugins-dependencies
+.flutter-plugins-dependencies
+.metadata
+pubspec.lock
+
+# Build outputs
+build/
+ios/Pods/
+android/.gradle/
+android/app/build/
+
+# Generated JSON Serializable files
+*.g.dart
+*.g.part
+
+# VSCode / IntelliJ
+.idea/
+.vscode/
+
+# macOS
+.DS_Store
+
+# Others
+.log
