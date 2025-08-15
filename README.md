@@ -63,7 +63,7 @@ lib/
 ### 1️⃣ Clone this repository
 
 ```bash
-git clone https://github.com/username/insurance_claim_app.git
+git clone https://github.com/fahruazzuhd/insurance_claim_app.git
 cd insurance_claim_app
 ```
 
