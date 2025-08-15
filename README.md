@@ -47,9 +47,9 @@ lib/
  │       └── presentation/
  │           ├── bindings/
  │           │   └── claim_binding.dart
- │           ├── controllers/
+ │           ├── controller/
  │           │   └── claim_controller.dart
- │           └── pages/
+ │           └── screen/
  │               ├── claim_list_page.dart
  │               └── claim_detail_page.dart
  ├── di.dart
