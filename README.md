@@ -52,7 +52,7 @@ lib/
  │           └── pages/
  │               ├── claim_list_page.dart
  │               └── claim_detail_page.dart
- ├── injection.dart
+ ├── di.dart
  └── main.dart
 ```
 
