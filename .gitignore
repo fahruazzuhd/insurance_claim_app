@@ -1,5 +1,5 @@
 # Flutter/Dart/Pub related
-.dart_tool/
+# .dart_tool/
 .packages
 .pub-cache/
 .flutter-plugins

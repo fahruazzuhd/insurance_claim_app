@@ -1,5 +1,7 @@
+import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:insurance_claim_app/core/network/api_client.dart';
+import 'package:insurance_claim_app/core/network/api_config.dart';
 import 'package:insurance_claim_app/features/claims/data/datasources/claim_remote_datasource.dart';
 import 'package:insurance_claim_app/features/claims/domain/usecases/get_claim.dart';
 import 'package:insurance_claim_app/features/claims/domain/usecases/search_claim.dart';
@@ -10,12 +12,16 @@ import 'features/claims/domain/repositories/claim_repository.dart';
 final sl = GetIt.instance;
 
 Future<void> init() async {
+  // Register Dio
+  sl.registerLazySingleton<Dio>(
+    () => Dio(BaseOptions(baseUrl: ApiConfig.baseUrl)),
+  );
   // Core
   sl.registerLazySingleton(() => ApiClient());
 
   // Data sources
   sl.registerLazySingleton<ClaimRemoteDataSource>(
-    () => ClaimRemoteDataSourceImpl(sl()),
+    () => ClaimRemoteDataSourceImpl(dio: sl()),
   );
 
   // Repository
