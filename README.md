@@ -42,9 +42,11 @@ lib/
  │       │   ├── repositories/
  │       │   │   └── claim_repository.dart
  │       │   └── usecases/
- │       │       ├── get_claims.dart
- │       │       └── search_claims.dart
+ │       │       ├── get_claim.dart
+ │       │       └── search_claim.dart
  │       └── presentation/
+ │           ├── bindings/
+ │           │   └── claim_binding.dart
  │           ├── controllers/
  │           │   └── claim_controller.dart
  │           └── pages/
