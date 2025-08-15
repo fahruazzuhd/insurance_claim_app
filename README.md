@@ -93,7 +93,6 @@ flutter run
 | --------------------------------------------- | ------------------------------------------------- |
 | ![List Screenshot](screenshoot/list_page.png) | ![Detail Screenshot](screenshoot/detail_page.png) |
 
-_(Place your screenshots in a `screenshots/` folder at the root of the project)_
 
 ---
 
