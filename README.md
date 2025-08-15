@@ -91,7 +91,7 @@ flutter run
 
 | List Page                                     | Detail Page                                       |
 | --------------------------------------------- | ------------------------------------------------- |
-| ![List Screenshot](screenshots/list_page.png) | ![Detail Screenshot](screenshots/detail_page.png) |
+| ![List Screenshot](screenshoot/list_page.png) | ![Detail Screenshot](screenshoot/detail_page.png) |
 
 _(Place your screenshots in a `screenshots/` folder at the root of the project)_
 
