@@ -3,16 +3,22 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i4;
+import 'dart:async' as _i5;
 
 import 'package:insurance_claim_app/features/claims/domain/entities/claim_entity.dart'
-    as _i5;
+    as _i6;
+import 'package:insurance_claim_app/features/claims/domain/entities/users_entity.dart'
+    as _i9;
 import 'package:insurance_claim_app/features/claims/domain/repositories/claim_repository.dart'
     as _i2;
-import 'package:insurance_claim_app/features/claims/domain/usecases/get_claim.dart'
+import 'package:insurance_claim_app/features/claims/domain/repositories/users_repository.dart'
     as _i3;
+import 'package:insurance_claim_app/features/claims/domain/usecases/get_claim.dart'
+    as _i4;
+import 'package:insurance_claim_app/features/claims/domain/usecases/get_user.dart'
+    as _i8;
 import 'package:insurance_claim_app/features/claims/domain/usecases/search_claim.dart'
-    as _i6;
+    as _i7;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -35,10 +41,16 @@ class _FakeClaimRepository_0 extends _i1.SmartFake
     : super(parent, parentInvocation);
 }
 
+class _FakeUsersRepository_1 extends _i1.SmartFake
+    implements _i3.UsersRepository {
+  _FakeUsersRepository_1(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
+}
+
 /// A class which mocks [GetClaim].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockGetClaim extends _i1.Mock implements _i3.GetClaim {
+class MockGetClaim extends _i1.Mock implements _i4.GetClaim {
   MockGetClaim() {
     _i1.throwOnMissingStub(this);
   }
@@ -55,20 +67,20 @@ class MockGetClaim extends _i1.Mock implements _i3.GetClaim {
           as _i2.ClaimRepository);
 
   @override
-  _i4.Future<List<_i5.ClaimEntity>> call() =>
+  _i5.Future<List<_i6.ClaimEntity>> call() =>
       (super.noSuchMethod(
             Invocation.method(#call, []),
-            returnValue: _i4.Future<List<_i5.ClaimEntity>>.value(
-              <_i5.ClaimEntity>[],
+            returnValue: _i5.Future<List<_i6.ClaimEntity>>.value(
+              <_i6.ClaimEntity>[],
             ),
           )
-          as _i4.Future<List<_i5.ClaimEntity>>);
+          as _i5.Future<List<_i6.ClaimEntity>>);
 }
 
 /// A class which mocks [SearchClaim].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockSearchClaim extends _i1.Mock implements _i6.SearchClaim {
+class MockSearchClaim extends _i1.Mock implements _i7.SearchClaim {
   MockSearchClaim() {
     _i1.throwOnMissingStub(this);
   }
@@ -85,12 +97,42 @@ class MockSearchClaim extends _i1.Mock implements _i6.SearchClaim {
           as _i2.ClaimRepository);
 
   @override
-  _i4.Future<List<_i5.ClaimEntity>> call(String? keyword) =>
+  _i5.Future<List<_i6.ClaimEntity>> call(String? keyword) =>
       (super.noSuchMethod(
             Invocation.method(#call, [keyword]),
-            returnValue: _i4.Future<List<_i5.ClaimEntity>>.value(
-              <_i5.ClaimEntity>[],
+            returnValue: _i5.Future<List<_i6.ClaimEntity>>.value(
+              <_i6.ClaimEntity>[],
             ),
           )
-          as _i4.Future<List<_i5.ClaimEntity>>);
+          as _i5.Future<List<_i6.ClaimEntity>>);
+}
+
+/// A class which mocks [GetUsers].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockGetUsers extends _i1.Mock implements _i8.GetUsers {
+  MockGetUsers() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i3.UsersRepository get repository =>
+      (super.noSuchMethod(
+            Invocation.getter(#repository),
+            returnValue: _FakeUsersRepository_1(
+              this,
+              Invocation.getter(#repository),
+            ),
+          )
+          as _i3.UsersRepository);
+
+  @override
+  _i5.Future<List<_i9.UsersEntity>> call() =>
+      (super.noSuchMethod(
+            Invocation.method(#call, []),
+            returnValue: _i5.Future<List<_i9.UsersEntity>>.value(
+              <_i9.UsersEntity>[],
+            ),
+          )
+          as _i5.Future<List<_i9.UsersEntity>>);
 }

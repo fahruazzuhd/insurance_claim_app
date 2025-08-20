@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get/get.dart';
 import 'package:insurance_claim_app/features/claims/domain/usecases/get_claim.dart';
+import 'package:insurance_claim_app/features/claims/domain/usecases/get_user.dart';
 import 'package:insurance_claim_app/features/claims/domain/usecases/search_claim.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -11,14 +12,16 @@ import 'package:insurance_claim_app/features/claims/presentation/screen/claim_li
 
 import 'claim_list_page_test.mocks.dart';
 
-@GenerateMocks([GetClaim, SearchClaim])
+@GenerateMocks([GetClaim, SearchClaim, GetUsers])
 void main() {
   late MockGetClaim mockGetClaim;
   late MockSearchClaim mockSearchClaim;
+  late MockGetUsers mockGetUser;
 
   setUp(() {
     mockGetClaim = MockGetClaim();
     mockSearchClaim = MockSearchClaim();
+    mockGetUser = MockGetUsers();
 
     when(mockGetClaim()).thenAnswer(
       (_) async => [
@@ -30,7 +33,11 @@ void main() {
 
   testWidgets('shows claims', (tester) async {
     Get.put(
-      ClaimController(getClaims: mockGetClaim, searchClaims: mockSearchClaim),
+      ClaimController(
+        getClaims: mockGetClaim,
+        searchClaims: mockSearchClaim,
+        getUsers: mockGetUser,
+      ),
     );
 
     await tester.pumpWidget(const GetMaterialApp(home: ClaimListPage()));
