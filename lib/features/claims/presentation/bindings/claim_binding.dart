@@ -5,6 +5,9 @@ import 'package:insurance_claim_app/features/claims/presentation/controller/clai
 class ClaimBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut(() => ClaimController(getClaims: sl(), searchClaims: sl()));
+    Get.lazyPut(
+      () =>
+          ClaimController(getClaims: sl(), searchClaims: sl(), getUsers: sl()),
+    );
   }
 }

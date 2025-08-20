@@ -3,4 +3,5 @@ class ApiConfig {
 
   // Endpoints
   static const String claims = '/posts';
+  static const String users = '/users';
 }

@@ -50,11 +50,22 @@ class ClaimListPage extends StatelessWidget {
           itemCount: controller.claims.length,
           itemBuilder: (context, index) {
             final claim = controller.claims[index];
+            final users = controller.users;
             return Card(
               child: ListTile(
-                title: Text(
-                  claim.title,
-                  style: const TextStyle(fontWeight: FontWeight.bold),
+                title: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      users.firstWhere((user) => user.id == claim.userId).name,
+                      style: const TextStyle(fontWeight: FontWeight.bold),
+                    ),
+
+                    Text(
+                      claim.title,
+                      style: const TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ],
                 ),
                 subtitle: Text(
                   claim.body,

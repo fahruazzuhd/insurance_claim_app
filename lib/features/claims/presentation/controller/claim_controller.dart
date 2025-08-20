@@ -1,15 +1,23 @@
 import 'package:get/state_manager.dart';
 import 'package:insurance_claim_app/features/claims/domain/entities/claim_entity.dart';
+import 'package:insurance_claim_app/features/claims/domain/entities/users_entity.dart';
 import 'package:insurance_claim_app/features/claims/domain/usecases/get_claim.dart';
+import 'package:insurance_claim_app/features/claims/domain/usecases/get_user.dart';
 import 'package:insurance_claim_app/features/claims/domain/usecases/search_claim.dart';
 
 class ClaimController extends GetxController {
   final GetClaim getClaims;
   final SearchClaim searchClaims;
+  final GetUsers getUsers;
 
-  ClaimController({required this.getClaims, required this.searchClaims});
+  ClaimController({
+    required this.getClaims,
+    required this.searchClaims,
+    required this.getUsers,
+  });
 
   var claims = <ClaimEntity>[].obs;
+  var users = <UsersEntity>[].obs;
   var isLoading = false.obs;
   var errorMessage = ''.obs;
 
@@ -25,6 +33,19 @@ class ClaimController extends GetxController {
       errorMessage.value = '';
       final result = await getClaims();
       claims.assignAll(result);
+    } catch (e) {
+      errorMessage.value = e.toString();
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
+  Future<void> fetchUsers() async {
+    try {
+      isLoading.value = true;
+      errorMessage.value = '';
+      final result = await getUsers();
+      users.assignAll(result);
     } catch (e) {
       errorMessage.value = e.toString();
     } finally {
