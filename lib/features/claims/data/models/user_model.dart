@@ -38,9 +38,9 @@ class UserModel {
   factory UserModel.fromEntity(UsersEntity entity) => UserModel(
     id: entity.id,
     name: entity.name,
-    username: entity.username,
-    email: entity.email,
-    phone: entity.phone,
-    website: entity.website,
+    username: entity.username ?? '',
+    email: entity.email ?? '',
+    phone: entity.phone ?? '',
+    website: entity.website ?? '',
   );
 }

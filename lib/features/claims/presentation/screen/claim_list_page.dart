@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/instance_manager.dart';
 import 'package:get/route_manager.dart';
 import 'package:get/state_manager.dart';
+import 'package:insurance_claim_app/features/claims/domain/entities/users_entity.dart';
 import 'package:insurance_claim_app/features/claims/presentation/controller/claim_controller.dart';
 import 'package:insurance_claim_app/features/claims/presentation/screen/claim_detail_page.dart';
 
@@ -57,7 +58,16 @@ class ClaimListPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      users.firstWhere((user) => user.id == claim.userId).name,
+                      users
+                          .firstWhere(
+                            (user) => user.id == claim.userId,
+                            orElse:
+                                () => const UsersEntity(
+                                  id: 0,
+                                  name: 'Unknown User',
+                                ),
+                          )
+                          .name,
                       style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
 

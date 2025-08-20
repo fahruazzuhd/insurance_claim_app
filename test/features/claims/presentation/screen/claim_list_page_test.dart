@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get/get.dart';
+import 'package:insurance_claim_app/features/claims/domain/entities/users_entity.dart';
 import 'package:insurance_claim_app/features/claims/domain/usecases/get_claim.dart';
 import 'package:insurance_claim_app/features/claims/domain/usecases/get_user.dart';
 import 'package:insurance_claim_app/features/claims/domain/usecases/search_claim.dart';
@@ -16,12 +17,12 @@ import 'claim_list_page_test.mocks.dart';
 void main() {
   late MockGetClaim mockGetClaim;
   late MockSearchClaim mockSearchClaim;
-  late MockGetUsers mockGetUser;
+  late MockGetUsers mockGetUsers;
 
   setUp(() {
     mockGetClaim = MockGetClaim();
     mockSearchClaim = MockSearchClaim();
-    mockGetUser = MockGetUsers();
+    mockGetUsers = MockGetUsers();
 
     when(mockGetClaim()).thenAnswer(
       (_) async => [
@@ -29,6 +30,19 @@ void main() {
       ],
     );
     when(mockSearchClaim(any)).thenAnswer((_) async => []);
+
+    when(mockGetUsers()).thenAnswer(
+      (_) async => [
+        const UsersEntity(
+          id: 1,
+          name: 'Test User',
+          username: 'test',
+          email: 'test',
+          phone: 'test',
+          website: 'test',
+        ),
+      ],
+    );
   });
 
   testWidgets('shows claims', (tester) async {
@@ -36,7 +50,7 @@ void main() {
       ClaimController(
         getClaims: mockGetClaim,
         searchClaims: mockSearchClaim,
-        getUsers: mockGetUser,
+        getUsers: mockGetUsers,
       ),
     );
 
@@ -45,6 +59,8 @@ void main() {
 
     expect(find.text('Test'), findsOneWidget);
     expect(find.text('Body'), findsOneWidget);
+
     verify(mockGetClaim()).called(1);
+    verify(mockGetUsers()).called(1);
   });
 }

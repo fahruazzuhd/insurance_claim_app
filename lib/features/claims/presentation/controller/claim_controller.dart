@@ -25,6 +25,7 @@ class ClaimController extends GetxController {
   void onInit() {
     super.onInit();
     fetchClaims();
+    fetchUsers();
   }
 
   Future<void> fetchClaims() async {
